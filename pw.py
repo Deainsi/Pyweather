@@ -75,7 +75,7 @@ class Ui_MainWindow(object):
         city = self.lineEdit.text()
         if city != "":
             try:
-                url = f"https://api.openweathermap.org/data/2.5/weather?q={city}&units=metric&APPID=18ad553a7ecce109726c14735c96fc44"
+                url = f"https://api.openweathermap.org/data/2.5/weather?q={city}&units=metric&APPID=Your API key"
                 response = requests.get(url)
                 data = json.loads(response.text)
                 self.label_2.setText(f"{data['weather'][0]['description']} {data['main']['temp']} C")
@@ -86,4 +86,4 @@ class Ui_MainWindow(object):
                 pixmap = QPixmap.fromImage(qim)
                 self.label.setPixmap(pixmap)
             except:
-                pass
+                self.label_2.setText("Couldn't get weather data")
